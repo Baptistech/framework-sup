@@ -15,6 +15,7 @@ try {
     $router->get('/article/:slug-:id', "Posts#show")->with('id', '[0-9]+')->with('slug', '([a-z\-0-9]+)');
     $router->post('/posts/:id', function($id){ echo 'Poster pour l\'article ' . $id . '<pre>' . print_r($_POST, true) . '</pre>'; });
     $router->get('/home', "Home#");
+    $router->get('/base', "Base#");
 
 //    $Post = new Post\Post(); //New post
 //    $Post->setTitle('My post title'); //Insert title
@@ -23,7 +24,6 @@ try {
 
     $router->run();
 } catch (Exception $e) {
-    var_dump('coucou');
     $a = new \Config\ErrorLog();
     $a->errorLog($e->getMessage());
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
